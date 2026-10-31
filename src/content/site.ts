@@ -6,7 +6,7 @@ export interface NavItem {
 export interface SocialLink {
   platform: string;
   url: string;
-  label: string;
+  handle: string;
 }
 
 export interface SiteConfig {
@@ -15,6 +15,7 @@ export interface SiteConfig {
   role: string;
   headline: string;
   location: string;
+  email: string;
   availability: {
     status: string;
     notice: string;
@@ -32,14 +33,13 @@ export const siteConfig: SiteConfig = {
   role: "Full-Stack Developer",
   headline:
     "Building web applications, digital products, and engineered experiences.",
-  location: "Kerala, India",
+  location: "Kochi, Kerala",
+  email: "kishahul123@gmail.com",
   availability: {
-    status:
-      "Available for full-time junior developer roles & select freelance projects",
-    notice: "Open to work",
+    status: "Open to freelance projects and full-time roles",
+    notice: "Available for hire",
   },
   nav: [
-    { label: "Hero", href: "#hero" },
     { label: "Work", href: "#work" },
     { label: "Skills", href: "#skills" },
     { label: "Journey", href: "#journey" },
@@ -51,23 +51,26 @@ export const siteConfig: SiteConfig = {
     {
       platform: "GitHub",
       url: "https://github.com/shahul-h007",
-      label: "github.com/shahul-h007",
+      handle: "shahul-h007",
     },
     {
       platform: "LinkedIn",
-      // TODO: Confirm exact LinkedIn profile handle from PORTFOLIO_BRIEF.md
-      url: "https://linkedin.com/in/",
-      label: "LinkedIn Profile",
+      url: "https://www.linkedin.com/in/shahul-hameed-ki",
+      handle: "shahul-hameed-ki",
     },
     {
-      platform: "Email",
-      // TODO: Confirm primary contact email from PORTFOLIO_BRIEF.md
-      url: "mailto:",
-      label: "Direct Transmission",
+      platform: "X",
+      url: "https://x.com/Shahul_hmd404",
+      handle: "@Shahul_hmd404",
+    },
+    {
+      platform: "Instagram",
+      url: "https://www.instagram.com/shaahul_h/",
+      handle: "@shaahul_h",
     },
   ],
   bio: {
     short:
-      "Full-stack developer focused on modern web applications, clean architecture, and purposeful motion. BCA graduate.",
+      "Full-stack developer focused on modern web applications, clean architecture, and purposeful motion. BCA graduate from Calicut University.",
   },
 };

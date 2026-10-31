@@ -10,51 +10,31 @@ export interface Venture {
   name: string;
   category: string;
   status: VentureStatus;
-  tagline: string;
   description: string;
-  link?: string;
+  domain?: string;
 }
 
-// AGENTS.md status words: Deployed, Completed, In development, Concept, Learning
-// No invented metrics, revenue, or dates.
 export const ventures: Venture[] = [
   {
     id: "chronyx",
     name: "Chronyx",
-    category: "Tactile Horology & Craft",
+    category: "Horology & Craft",
     status: "In development",
-    tagline:
-      "Handcrafted wooden desktop clocks and minimalist mechanical timepieces.",
-    description:
-      "A physical product venture combining precision woodworking, quiet mechanics, and minimalist timekeeping aesthetics.",
+    description: "Handmade wooden wall clocks engineered with tactile materials and minimal silhouettes.",
+    domain: "chronyx.in",
   },
   {
     id: "the-rig-space",
     name: "The Rig Space",
-    category: "Workstation Architecture",
+    category: "Automotive Art",
     status: "Concept",
-    tagline:
-      "Ergonomic workspace designs, engineered desk setups, and developer ergonomics.",
-    description:
-      "Explorations into intentional workstation design, cable routing architecture, and tactile workspace equipment.",
+    description: "3D car blueprint artwork and technical motorsport vector compositions.",
   },
   {
     id: "ell-edition",
     name: "ELL Edition",
-    category: "Industrial & Everyday Carry",
+    category: "Apparel & Objects",
     status: "Concept",
-    tagline: "Functional goods and minimal personal tools.",
-    description:
-      "Design concepts focused on durable materials, minimal footprints, and practical daily utility.",
-  },
-  {
-    id: "octave-zero",
-    name: "Octave Zero",
-    category: "Technical Content & Media",
-    status: "In development", // TODO: Confirm status from PORTFOLIO_BRIEF.md
-    tagline:
-      "Content exploring software craft, developer setups, and product engineering.",
-    description:
-      "A platform documenting technical builds, engineering perspectives, and real-world software workflows.",
+    description: "Minimal apparel exploring utilitarian patterns and monochrome textile design.",
   },
 ];

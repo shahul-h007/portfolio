@@ -7,6 +7,7 @@ import Cursor from "@/components/motion/Cursor";
 import Intro from "@/components/motion/Intro";
 import PageTransition from "@/components/motion/PageTransition";
 import Navbar from "@/components/navigation/Navbar";
+import Footer from "@/components/layout/Footer";
 import { IntroProvider } from "@/context/IntroContext";
 
 const syne = Syne({
@@ -52,7 +53,8 @@ export default function RootLayout({
               <Intro />
               <Navbar />
               <div className="relative z-10 min-h-screen flex flex-col">
-                {children}
+                <div className="flex-1">{children}</div>
+                <Footer />
               </div>
             </SmoothScroll>
           </PageTransition>
