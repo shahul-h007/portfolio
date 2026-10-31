@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import Cursor from "@/components/motion/Cursor";
 import Intro from "@/components/motion/Intro";
+import PageTransition from "@/components/motion/PageTransition";
 import Navbar from "@/components/navigation/Navbar";
 import { IntroProvider } from "@/context/IntroContext";
 
@@ -44,15 +45,17 @@ export default function RootLayout({
     >
       <body className="bg-canvas text-ink antialiased selection:bg-gold/30 selection:text-gold relative">
         <IntroProvider>
-          <SmoothScroll>
-            <ScrollProgress />
-            <Cursor />
-            <Intro />
-            <Navbar />
-            <div className="relative z-10 min-h-screen flex flex-col">
-              {children}
-            </div>
-          </SmoothScroll>
+          <PageTransition>
+            <SmoothScroll>
+              <ScrollProgress />
+              <Cursor />
+              <Intro />
+              <Navbar />
+              <div className="relative z-10 min-h-screen flex flex-col">
+                {children}
+              </div>
+            </SmoothScroll>
+          </PageTransition>
         </IntroProvider>
       </body>
     </html>

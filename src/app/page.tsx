@@ -1,8 +1,8 @@
 import Hero from "@/components/sections/Hero";
+import WorkSection from "@/components/sections/WorkSection";
 
 export default function HomePage() {
   const placeholderSections = [
-    { id: "work", label: "02 // WORK" },
     { id: "skills", label: "03 // SKILLS" },
     { id: "journey", label: "04 // JOURNEY" },
     { id: "about", label: "05 // ABOUT" },
@@ -14,6 +14,9 @@ export default function HomePage() {
     <main className="w-full">
       {/* 01 // HERO Section */}
       <Hero />
+
+      {/* 02 // WORK Section */}
+      <WorkSection />
 
       {/* Remaining Placeholder Sections (untouched per working rules) */}
       {placeholderSections.map((section, idx) => (
