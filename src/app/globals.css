@@ -69,6 +69,13 @@
   }
 }
 
+/* Reduced motion bypass for intro */
+@media (prefers-reduced-motion: reduce) {
+  aside[aria-label="Site introduction"] {
+    display: none !important;
+  }
+}
+
 /* Lenis standard CSS */
 html.lenis,
 html.lenis body {

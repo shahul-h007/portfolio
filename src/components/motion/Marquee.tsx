@@ -104,7 +104,7 @@ export default function Marquee({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden w-full whitespace-nowrap select-none ${className}`}
+      className={`relative overflow-hidden overflow-x-clip max-w-full w-full whitespace-nowrap select-none [contain:paint] ${className}`}
     >
       <div
         ref={trackRef}

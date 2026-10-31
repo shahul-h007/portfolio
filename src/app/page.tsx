@@ -1,6 +1,7 @@
+import Hero from "@/components/sections/Hero";
+
 export default function HomePage() {
-  const sections = [
-    { id: "hero", label: "01 // HERO" },
+  const placeholderSections = [
     { id: "work", label: "02 // WORK" },
     { id: "skills", label: "03 // SKILLS" },
     { id: "journey", label: "04 // JOURNEY" },
@@ -11,22 +12,11 @@ export default function HomePage() {
 
   return (
     <main className="w-full">
-      {/* Quick floating anchor test bar */}
-      <nav className="fixed top-4 right-4 z-50 flex flex-wrap gap-2 p-2 bg-chassis/80 backdrop-blur border border-white/10 font-mono text-xs">
-        {sections.map((section) => (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            data-cursor="Jump"
-            className="px-2 py-1 text-muted hover:text-gold transition-colors"
-          >
-            #{section.id}
-          </a>
-        ))}
-      </nav>
+      {/* 01 // HERO Section */}
+      <Hero />
 
-      {/* Placeholder sections */}
-      {sections.map((section, idx) => (
+      {/* Remaining Placeholder Sections (untouched per working rules) */}
+      {placeholderSections.map((section, idx) => (
         <section
           key={section.id}
           id={section.id}
