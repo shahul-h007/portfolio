@@ -1,11 +1,11 @@
 import Hero from "@/components/sections/Hero";
 import WorkSection from "@/components/sections/WorkSection";
+import SkillsSection from "@/components/sections/SkillsSection";
+import JourneySection from "@/components/sections/JourneySection";
+import AboutSection from "@/components/sections/AboutSection";
 
 export default function HomePage() {
   const placeholderSections = [
-    { id: "skills", label: "03 // SKILLS" },
-    { id: "journey", label: "04 // JOURNEY" },
-    { id: "about", label: "05 // ABOUT" },
     { id: "ventures", label: "06 // VENTURES" },
     { id: "contact", label: "07 // CONTACT" },
   ];
@@ -17,6 +17,15 @@ export default function HomePage() {
 
       {/* 02 // WORK Section */}
       <WorkSection />
+
+      {/* 03 // SKILLS Section */}
+      <SkillsSection />
+
+      {/* 04 // JOURNEY Section */}
+      <JourneySection />
+
+      {/* 05 // ABOUT Section */}
+      <AboutSection />
 
       {/* Remaining Placeholder Sections (untouched per working rules) */}
       {placeholderSections.map((section, idx) => (

@@ -50,6 +50,13 @@ export default function SmoothScroll({
     gsap.ticker.add(tickerUpdate);
     gsap.ticker.lagSmoothing(0);
 
+    // Refresh ScrollTrigger after custom web fonts load
+    if (typeof document !== "undefined" && document.fonts) {
+      document.fonts.ready.then(() => {
+        ScrollTrigger.refresh();
+      });
+    }
+
     return () => {
       gsap.ticker.remove(tickerUpdate);
       l.destroy();
