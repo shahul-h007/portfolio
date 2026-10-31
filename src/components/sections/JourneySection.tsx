@@ -115,7 +115,7 @@ export default function JourneySection() {
                 {/* Huge Number & Heading */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline mb-8">
                   <div className="md:col-span-3">
-                    <span className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter text-white/20 leading-none select-none">
+                    <span aria-hidden="true" className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter text-white/25 leading-none select-none">
                       {panel.index}
                     </span>
                   </div>
@@ -134,7 +134,7 @@ export default function JourneySection() {
 
                 {/* Plain text milestone tags joined by ' · ' per AGENTS.md */}
                 <div className="pt-6 border-t border-white/10">
-                  <div className="font-mono text-[11px] uppercase tracking-wider text-muted/60 mb-2">
+                  <div className="font-mono text-[11px] uppercase tracking-wider text-muted mb-2">
                     Key Milestones & Focus
                   </div>
                   <p className="font-mono text-xs md:text-sm text-ink/80 leading-relaxed">

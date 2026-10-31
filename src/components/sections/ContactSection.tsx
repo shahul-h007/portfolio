@@ -116,15 +116,15 @@ export default function ContactSection() {
             <span className="text-ink uppercase tracking-wider font-medium">
               Available for Hire
             </span>
-            <span className="text-white/20">|</span>
-            <span>Open to freelance projects & full-time developer roles</span>
+            <span className="hidden sm:inline text-white/20">|</span>
+            <span className="block sm:inline">Open to freelance projects & full-time developer roles</span>
           </div>
           <span className="text-gold tracking-widest uppercase">06 // INITIATE</span>
         </div>
 
         {/* Huge Display Headline */}
         <div className="mb-12 md:mb-16">
-          <h2 className="font-display text-[clamp(2.15rem,7.5vw,5.5rem)] uppercase tracking-tight font-extrabold text-ink leading-[1.05] break-words">
+          <h2 className="font-display text-[clamp(1.85rem,7vw,5.5rem)] uppercase tracking-tight font-extrabold text-ink leading-[1.05] break-words">
             <SplitReveal>Let's build something.</SplitReveal>
           </h2>
         </div>
@@ -335,7 +335,7 @@ export default function ContactSection() {
           {/* Right Column: Social Channels Ruled List */}
           <div className="lg:col-span-5">
             <div className="mb-8">
-              <span className="font-mono text-xs text-muted/60 uppercase tracking-widest block mb-1">
+              <span className="font-mono text-xs text-muted uppercase tracking-widest block mb-1">
                 Connected Networks
               </span>
               <h3 className="font-display text-xl md:text-2xl font-bold uppercase tracking-tight text-ink">

@@ -18,6 +18,8 @@
 .DS_Store
 *.pem
 /out-screenshots/
+/screenshots/
+lighthouse-report*.json
 
 # debug
 npm-debug.log*

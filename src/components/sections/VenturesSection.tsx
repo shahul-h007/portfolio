@@ -36,14 +36,14 @@ export default function VenturesSection() {
               <div className="py-6 md:py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-baseline group hover:bg-surface/20 transition-colors duration-200">
                 {/* Index & Name */}
                 <div className="md:col-span-4 flex items-baseline gap-4">
-                  <span className="font-mono text-xs text-muted/60 tracking-widest">
+                  <span className="font-mono text-xs text-muted tracking-widest">
                     0{idx + 1}
                   </span>
                   <div>
                     <h3 className="font-display text-lg md:text-xl font-bold uppercase tracking-tight text-ink group-hover:text-gold transition-colors duration-200">
                       {venture.name}
                     </h3>
-                    <span className="font-mono text-[11px] text-muted/70 tracking-wider uppercase">
+                    <span className="font-mono text-[11px] text-muted tracking-wider uppercase">
                       {venture.category}
                     </span>
                   </div>

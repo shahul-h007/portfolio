@@ -36,32 +36,32 @@ export default function Intro() {
       });
       tlRef.current = tl;
 
-      // 1. Text reveal (0.35s)
+      // 1. Initial monogram reveal
       tl.fromTo(
         textRef.current,
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }
+        { opacity: 0.8, y: 12 },
+        { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }
       );
 
       // 2. Subtitle reveal
       tl.fromTo(
         labelRef.current,
         { opacity: 0 },
-        { opacity: 0.7, duration: 0.25, ease: "power2.out" },
-        "-=0.15"
+        { opacity: 1, duration: 0.2, ease: "power2.out" },
+        "-=0.1"
       );
 
-      // 3. Gold progress line (0.5s)
+      // 3. Gold progress line (0.4s)
       tl.fromTo(
         lineRef.current,
         { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" }
+        { scaleX: 1, duration: 0.4, ease: "power2.inOut" }
       );
 
-      // 4. Curtain slides up via clip-path (0.5s, expo.out) — total <= 1.6s
+      // 4. Curtain slides up via clip-path (0.45s, expo.out) — total ~1.0s
       tl.to(containerRef.current, {
         clipPath: "inset(0% 0% 100% 0%)",
-        duration: 0.5,
+        duration: 0.45,
         ease: "expo.out",
       });
     },
@@ -113,14 +113,14 @@ export default function Intro() {
         {/* Telemetry label */}
         <div
           ref={labelRef}
-          className="font-mono text-[10px] tracking-[0.25em] text-muted uppercase mt-4"
+          className="font-mono text-xs tracking-[0.25em] text-muted uppercase mt-4"
         >
           ENGINEERED EXPERIENCES
         </div>
       </div>
 
       {/* Skippable prompt */}
-      <span className="absolute bottom-8 font-mono text-[9px] tracking-widest text-muted/50 uppercase">
+      <span className="absolute bottom-8 font-mono text-[10px] tracking-widest text-muted uppercase">
         Click to skip
       </span>
     </aside>

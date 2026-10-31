@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Lock, Eye, CheckCircle2 } from "lucide-react";
@@ -11,6 +12,30 @@ export async function generateStaticParams() {
   return projects.map((p) => ({
     slug: p.id,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.id === slug);
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} — Case Study`,
+    description: project.problemStatement,
+    openGraph: {
+      title: `${project.title} — Case Study | Shahul Hameed`,
+      description: project.problemStatement,
+      type: "article",
+    },
+  };
 }
 
 export default async function ProjectCaseStudyPage({

@@ -118,7 +118,7 @@ export default function WorkSection() {
                   navigateWithTransition(`/work/${project.id}`);
                 }
               }}
-              className="sticky top-0 z-[10] min-h-[92vh] md:h-screen w-full bg-chassis border-b border-white/10 flex flex-col justify-center py-12 md:py-0 cursor-pointer select-none transition-colors duration-300 hover:border-gold/30"
+              className="relative md:sticky md:top-0 z-[10] min-h-0 md:h-screen w-full bg-chassis border-b border-white/10 flex flex-col justify-center py-12 md:py-0 cursor-pointer select-none transition-colors duration-300 hover:border-gold/30"
             >
               <div className="max-w-[1440px] w-full mx-auto px-4 md:px-8 py-6 md:py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -210,7 +210,7 @@ export default function WorkSection() {
                       )}
 
                       {!project.liveUrl && !project.githubUrl && (
-                        <span className="font-mono text-xs text-muted/60 italic">
+                        <span className="font-mono text-xs text-muted italic">
                           Client project · Private repository
                         </span>
                       )}
@@ -226,7 +226,7 @@ export default function WorkSection() {
                           <span className="w-1.5 h-1.5 bg-white/20" />
                           <span>{project.id.toUpperCase()} // SYS.VIEW</span>
                         </div>
-                        <span className="text-white/40">1440 × 900</span>
+                        <span className="text-muted">1440 × 900</span>
                       </div>
 
                       {/* Visual Content */}
@@ -248,9 +248,9 @@ export default function WorkSection() {
                           <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-chassis/70">
                             <div className="w-12 h-12 border border-white/10 flex items-center justify-center mb-4 text-gold">
                               {project.id === "shefeer-portfolio" ? (
-                                <Eye className="w-5 h-5 text-gold/80" />
+                                <Eye className="w-5 h-5 text-gold" />
                               ) : (
-                                <Lock className="w-5 h-5 text-gold/80" />
+                                <Lock className="w-5 h-5 text-gold" />
                               )}
                             </div>
                             <div className="font-mono text-xs md:text-sm uppercase tracking-widest text-ink font-semibold mb-2">
@@ -259,7 +259,7 @@ export default function WorkSection() {
                             <p className="font-sans text-xs md:text-sm text-muted max-w-sm leading-relaxed mb-4">
                               {project.previewReason || "Preview is currently being assembled."}
                             </p>
-                            <span className="font-mono text-[11px] text-muted/60 border border-white/10 px-2.5 py-1 uppercase tracking-wider">
+                            <span className="font-mono text-[11px] text-muted border border-white/15 px-2.5 py-1 uppercase tracking-wider">
                               {project.statusBadge}
                             </span>
                           </div>

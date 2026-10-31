@@ -91,24 +91,28 @@ export default function AboutSection() {
             <span className="font-mono text-xs text-gold uppercase tracking-widest block mb-4">
               Mission & Engineering Philosophy
             </span>
-            <p
-              ref={paragraphRef}
-              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-medium leading-[1.35] tracking-tight"
-            >
-              {words.map((word, i) => (
-                <span
-                  key={i}
-                  className="about-word inline-block opacity-15 will-change-transform mr-[0.28em]"
-                >
-                  {word}
-                </span>
-              ))}
-            </p>
+            {/* Accessible screen reader version with full WCAG contrast */}
+            <p className="sr-only">{aboutNarrative}</p>
+            <div aria-hidden="true">
+              <p
+                ref={paragraphRef}
+                className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-medium leading-[1.35] tracking-tight"
+              >
+                {words.map((word, i) => (
+                  <span
+                    key={i}
+                    className="about-word inline-block opacity-15 will-change-transform mr-[0.28em]"
+                  >
+                    {word}
+                  </span>
+                ))}
+              </p>
+            </div>
           </div>
 
           {/* Right Column: 3 Plain Ruled Facts (No repeated portrait) */}
           <div className="lg:col-span-5">
-            <span className="font-mono text-xs text-muted/60 uppercase tracking-widest block mb-4">
+            <span className="font-mono text-xs text-muted uppercase tracking-widest block mb-4">
               Core Profile & Fundamentals
             </span>
 
