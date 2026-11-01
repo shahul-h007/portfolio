@@ -1,3 +1,6 @@
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://shahul.runs-on.dev";
+
 export interface NavItem {
   label: string;
   href: string;

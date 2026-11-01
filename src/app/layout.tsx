@@ -9,6 +9,7 @@ import PageTransition from "@/components/motion/PageTransition";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/layout/Footer";
 import { IntroProvider } from "@/context/IntroContext";
+import { SITE_URL } from "@/config/site";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -28,10 +29,11 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shahul-h007.github.io";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
   title: {
     default: "Shahul Hameed — Full-Stack Developer",
     template: "%s | Shahul Hameed",
@@ -65,14 +67,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
+    url: SITE_URL,
     title: "Shahul Hameed — Full-Stack Developer",
     description:
       "Personal portfolio of Shahul Hameed. Full-stack developer focused on modern web applications, clean architecture, and purposeful motion.",
     siteName: "Shahul Hameed Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Shahul Hameed — Full-Stack Developer",
@@ -85,7 +87,7 @@ export const metadata: Metadata = {
     description:
       "Personal portfolio of Shahul Hameed. Full-stack developer focused on modern web applications, clean architecture, and purposeful motion.",
     creator: "@Shahul_hmd404",
-    images: ["/og-image.png"],
+    images: ["/og.png"],
   },
   icons: {
     icon: [

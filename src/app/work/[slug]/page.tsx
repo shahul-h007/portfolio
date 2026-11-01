@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, ExternalLink, Github, Lock, Eye, CheckCircle2 } 
 import { projects, Project } from "@/content/projects";
 import SplitReveal from "@/components/motion/SplitReveal";
 import Reveal from "@/components/motion/Reveal";
+import { SITE_URL } from "@/config/site";
 
 export async function generateStaticParams() {
   return projects.map((p) => ({
@@ -30,10 +31,28 @@ export async function generateMetadata({
   return {
     title: `${project.title} — Case Study`,
     description: project.problemStatement,
+    alternates: {
+      canonical: `${SITE_URL}/work/${slug}/`,
+    },
     openGraph: {
       title: `${project.title} — Case Study | Shahul Hameed`,
       description: project.problemStatement,
+      url: `${SITE_URL}/work/${slug}/`,
       type: "article",
+      images: [
+        {
+          url: project.desktopImage || "/og.png",
+          width: 1200,
+          height: 630,
+          alt: `${project.title} — Case Study`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Case Study | Shahul Hameed`,
+      description: project.problemStatement,
+      images: [project.desktopImage || "/og.png"],
     },
   };
 }
@@ -67,7 +86,7 @@ export default async function ProjectCaseStudyPage({
             className="inline-flex items-center gap-2 uppercase tracking-wider text-ink hover:text-gold transition-colors focus-visible:outline-gold"
           >
             <ArrowLeft className="w-3.5 h-3.5 text-gold" />
-            <span>← All work</span>
+            <span>All work</span>
           </Link>
 
           {/* Breadcrumb: Home / Work / <project> */}
