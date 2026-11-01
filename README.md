@@ -1,8 +1,14 @@
 # Shahul Hameed — Personal Developer Portfolio
 
+[![Live Site](https://img.shields.io/badge/Live_Site-shahulhmd.vercel.app-D4AF37?style=flat&logo=vercel)](https://shahulhmd.vercel.app)
+[![Built with Next.js](https://img.shields.io/badge/Built_with-Next.js_15-black?style=flat&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org)
+
 Personal portfolio website for **Shahul Hameed**, full-stack software developer and systems builder based in Kochi, Kerala.
 
 Built with Next.js 15 App Router (static export), React 19, TypeScript, Tailwind CSS 3.4, and a motion system powered by GSAP, ScrollTrigger, and Lenis inertia scrolling.
+
+**🌐 Live Portfolio**: [https://shahulhmd.vercel.app](https://shahulhmd.vercel.app) (Alias: [https://shahul-hameed.vercel.app](https://shahul-hameed.vercel.app))
 
 ---
 
@@ -28,8 +34,8 @@ Built with Next.js 15 App Router (static export), React 19, TypeScript, Tailwind
 ### 1. Installation
 
 ```bash
-git clone https://github.com/shahul-h007/shahul-h007.github.io.git
-cd portfolio-v2
+git clone https://github.com/shahul-h007/portfolio.git
+cd portfolio
 npm install
 ```
 
@@ -39,7 +45,7 @@ Create a `.env.local` file for local development (copy from `.env.example`):
 
 ```bash
 # Optional: Set the canonical site URL (defaults to https://shahul.runs-on.dev if unset)
-NEXT_PUBLIC_SITE_URL=https://shahul.runs-on.dev
+NEXT_PUBLIC_SITE_URL=https://shahulhmd.vercel.app
 
 # Optional: Web3Forms access key for contact transmission
 NEXT_PUBLIC_WEB3FORMS_KEY=
