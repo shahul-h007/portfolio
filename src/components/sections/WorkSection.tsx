@@ -115,6 +115,10 @@ export default function WorkSection() {
                 // If user didn't click directly on an interactive external link
                 const target = e.target as HTMLElement;
                 if (!target.closest("a")) {
+                  if (typeof window !== "undefined") {
+                    sessionStorage.setItem("return_to_work", "true");
+                    window.history.replaceState(null, "", "/#work");
+                  }
                   navigateWithTransition(`/work/${project.id}`);
                 }
               }}
@@ -177,6 +181,12 @@ export default function WorkSection() {
                     <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-white/10">
                       <TransitionLink
                         href={`/work/${project.id}`}
+                        onClick={() => {
+                          if (typeof window !== "undefined") {
+                            sessionStorage.setItem("return_to_work", "true");
+                            window.history.replaceState(null, "", "/#work");
+                          }
+                        }}
                         className="group inline-flex items-center gap-2 font-mono text-xs md:text-sm uppercase tracking-wider text-ink hover:text-gold transition-colors duration-200"
                       >
                         <span>Case Study</span>
@@ -295,6 +305,12 @@ export default function WorkSection() {
                 key={project.id}
                 href={`/work/${project.id}`}
                 data-cursor="View"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    sessionStorage.setItem("return_to_work", "true");
+                    window.history.replaceState(null, "", "/#work");
+                  }
+                }}
                 className="group block py-6 md:py-8 transition-colors duration-200 hover:bg-surface/30"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start md:items-center">

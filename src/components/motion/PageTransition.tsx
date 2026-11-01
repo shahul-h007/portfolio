@@ -71,6 +71,9 @@ export default function PageTransition({ children }: { children: React.ReactNode
       onComplete: () => {
         setIsTransitioning(false);
         targetHrefRef.current = null;
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("page-transition-complete"));
+        }
       },
     });
   }, [pathname]);
@@ -136,15 +139,16 @@ export default function PageTransition({ children }: { children: React.ReactNode
     <PageTransitionContext.Provider value={{ navigateWithTransition, isTransitioning }}>
       {children}
 
-      {/* Full-screen transition curtain */}
+      {/* Full-screen transition curtain (never blocks navigation) */}
       <div
         ref={curtainRef}
         aria-hidden="true"
+        data-transition-curtain="true"
         className="fixed inset-0 z-[9990] bg-chassis border-t border-b border-gold/30 pointer-events-none"
         style={{
           transform: "scaleY(0)",
           transformOrigin: "bottom",
-          pointerEvents: isTransitioning ? "auto" : "none",
+          pointerEvents: "none",
         }}
       >
         <div className="absolute inset-0 flex items-center justify-center">

@@ -40,12 +40,12 @@ export const siteConfig: SiteConfig = {
     notice: "Available for hire",
   },
   nav: [
-    { label: "Work", href: "#work" },
-    { label: "Skills", href: "#skills" },
-    { label: "Journey", href: "#journey" },
-    { label: "About", href: "#about" },
-    { label: "Ventures", href: "#ventures" },
-    { label: "Contact", href: "#contact" },
+    { label: "Work", href: "/#work" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Journey", href: "/#journey" },
+    { label: "About", href: "/#about" },
+    { label: "Ventures", href: "/#ventures" },
+    { label: "Contact", href: "/#contact" },
   ],
   social: [
     {

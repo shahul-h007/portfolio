@@ -2,10 +2,12 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useIntro } from "@/context/IntroContext";
+import { useLenis } from "@/components/motion/SmoothScroll";
 import Magnetic from "@/components/motion/Magnetic";
 import SplitReveal from "@/components/motion/SplitReveal";
 import Marquee from "@/components/motion/Marquee";
@@ -14,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const { introFinished } = useIntro();
+  const lenis = useLenis();
 
   const heroSectionRef = useRef<HTMLElement>(null);
   const word1Ref = useRef<HTMLDivElement>(null);
@@ -279,23 +282,35 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-6 pt-1">
             {/* CTA 1: Solid button wrapped in Magnetic. Hover to gold is Accent #2 */}
             <Magnetic strength={0.25}>
-              <a
-                href="#work"
+              <Link
+                href="/#work"
                 data-cursor="Work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState(null, "", "/#work");
+                  if (lenis) lenis.scrollTo("#work", { duration: 1.2 });
+                  else document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className="inline-flex items-center justify-center px-6 py-3 bg-ink text-canvas font-mono text-xs uppercase tracking-wider font-semibold transition-colors duration-200 hover:bg-gold hover:text-canvas focus-visible:outline-gold"
               >
                 Explore my work
-              </a>
+              </Link>
             </Magnetic>
 
             {/* CTA 2: Underlined text link */}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               data-cursor="Connect"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, "", "/#contact");
+                if (lenis) lenis.scrollTo("#contact", { duration: 1.2 });
+                else document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="font-mono text-xs uppercase tracking-wider text-muted hover:text-ink underline underline-offset-8 decoration-white/20 hover:decoration-white/60 transition-colors"
             >
               Contact me
-            </a>
+            </Link>
           </div>
 
           {/* Ruled Meta Row at the Bottom */}

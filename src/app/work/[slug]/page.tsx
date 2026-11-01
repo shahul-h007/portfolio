@@ -1,12 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Lock, Eye, CheckCircle2 } from "lucide-react";
 import { projects, Project } from "@/content/projects";
 import SplitReveal from "@/components/motion/SplitReveal";
 import Reveal from "@/components/motion/Reveal";
-import { TransitionLink } from "@/components/motion/PageTransition";
 
 export async function generateStaticParams() {
   return projects.map((p) => ({
@@ -50,21 +50,41 @@ export default async function ProjectCaseStudyPage({
   }
 
   const project: Project = projects[projectIndex];
+  const prevProjectIndex = (projectIndex - 1 + projects.length) % projects.length;
+  const prevProject: Project = projects[prevProjectIndex];
   const nextProjectIndex = (projectIndex + 1) % projects.length;
   const nextProject: Project = projects[nextProjectIndex];
   const indexFormatted = String(projectIndex + 1).padStart(2, "0");
 
   return (
-    <article className="w-full bg-canvas text-ink pt-28 md:pt-36 pb-24">
-      {/* Top Navigation Bar */}
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8 mb-8 md:mb-12">
-        <TransitionLink
-          href="/#work"
-          className="inline-flex items-center gap-2 font-mono text-xs md:text-sm uppercase tracking-wider text-muted hover:text-gold transition-colors duration-200"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Selected Work</span>
-        </TransitionLink>
+    <article className="w-full bg-canvas text-ink pt-20 pb-0">
+      {/* Sticky Sub-Header with "← All work" & Breadcrumb */}
+      <div className="sticky top-0 z-30 bg-canvas/95 backdrop-blur-md border-b border-white/10 mb-8 md:mb-12">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between text-xs font-mono">
+          {/* Always reachable "← All work" */}
+          <Link
+            href="/#work"
+            className="inline-flex items-center gap-2 uppercase tracking-wider text-ink hover:text-gold transition-colors focus-visible:outline-gold"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+            <span>← All work</span>
+          </Link>
+
+          {/* Breadcrumb: Home / Work / <project> */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-muted">
+            <Link href="/" className="hover:text-ink transition-colors">
+              Home
+            </Link>
+            <span className="text-white/20">/</span>
+            <Link href="/#work" className="hover:text-ink transition-colors">
+              Work
+            </Link>
+            <span className="text-white/20">/</span>
+            <span className="text-ink font-medium truncate max-w-[140px] sm:max-w-none">
+              {project.title}
+            </span>
+          </nav>
+        </div>
       </div>
 
       {/* 1. HERO SECTION */}
@@ -412,31 +432,70 @@ export default async function ProjectCaseStudyPage({
         </div>
       </section>
 
-      {/* 8. NEXT PROJECT BANNER */}
-      <footer className="mt-16 border-t border-white/10 bg-chassis transition-colors duration-300 hover:border-gold/30">
-        <TransitionLink
-          href={`/work/${nextProject.id}`}
-          data-cursor="Next"
-          className="group block max-w-[1440px] mx-auto px-4 md:px-8 py-20 md:py-28"
+      {/* 8. BACK TO WORK CTA */}
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-14 md:py-20 text-center border-t border-white/10">
+        <Link
+          href="/#work"
+          className="inline-flex items-center gap-3 px-8 py-4 border border-white/20 bg-surface/40 font-mono text-xs md:text-sm uppercase tracking-wider text-ink hover:border-gold hover:text-gold hover:bg-surface transition-all duration-200"
         >
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <span className="font-mono text-xs text-gold uppercase tracking-widest block mb-3">
-                Next Case Study →
-              </span>
-              <h2 className="font-display text-[clamp(1.75rem,5.5vw,3.75rem)] uppercase tracking-tight font-extrabold text-ink group-hover:text-gold transition-colors duration-300 break-words leading-tight">
-                {nextProject.title}
-              </h2>
-              <p className="font-mono text-xs md:text-sm text-muted uppercase tracking-wider mt-2">
-                {nextProject.category} · {nextProject.statusBadge}
-              </p>
-            </div>
+          <ArrowLeft className="w-4 h-4 text-gold" />
+          <span>Back to all work</span>
+        </Link>
+      </div>
 
-            <div className="w-14 h-14 border border-white/15 flex items-center justify-center text-ink group-hover:border-gold group-hover:text-gold transition-all duration-300">
-              <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" />
+      {/* 9. BIDIRECTIONAL CASE STUDY NAVIGATION */}
+      <footer className="border-t border-white/10 bg-chassis">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
+          {/* Previous Project */}
+          <Link
+            href={`/work/${prevProject.id}`}
+            data-cursor="Prev"
+            className="group block p-8 md:p-14 transition-colors duration-300 hover:bg-surface/40"
+          >
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <span className="font-mono text-xs text-gold uppercase tracking-widest block mb-3">
+                  ← Previous Case Study
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight font-extrabold text-ink group-hover:text-gold transition-colors duration-200 break-words">
+                  {prevProject.title}
+                </h3>
+                <p className="font-mono text-xs md:text-sm text-muted uppercase tracking-wider mt-2">
+                  {prevProject.category} · {prevProject.statusBadge}
+                </p>
+              </div>
+              <div className="mt-8 flex items-center gap-2 font-mono text-xs text-muted group-hover:text-gold transition-colors">
+                <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+                <span>Read case study</span>
+              </div>
             </div>
-          </div>
-        </TransitionLink>
+          </Link>
+
+          {/* Next Project */}
+          <Link
+            href={`/work/${nextProject.id}`}
+            data-cursor="Next"
+            className="group block p-8 md:p-14 text-left md:text-right transition-colors duration-300 hover:bg-surface/40"
+          >
+            <div className="flex flex-col justify-between h-full items-start md:items-end">
+              <div>
+                <span className="font-mono text-xs text-gold uppercase tracking-widest block mb-3">
+                  Next Case Study →
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight font-extrabold text-ink group-hover:text-gold transition-colors duration-200 break-words">
+                  {nextProject.title}
+                </h3>
+                <p className="font-mono text-xs md:text-sm text-muted uppercase tracking-wider mt-2">
+                  {nextProject.category} · {nextProject.statusBadge}
+                </p>
+              </div>
+              <div className="mt-8 flex items-center gap-2 font-mono text-xs text-muted group-hover:text-gold transition-colors">
+                <span>Read case study</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </div>
+            </div>
+          </Link>
+        </div>
       </footer>
     </article>
   );
