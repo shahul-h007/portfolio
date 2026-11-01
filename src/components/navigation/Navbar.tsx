@@ -226,6 +226,7 @@ export default function Navbar() {
                 }
               }}
               className="font-display font-extrabold text-2xl tracking-tighter text-ink hover:text-gold transition-colors focus-visible:outline-gold shrink-0"
+              aria-label="SH — Shahul Hameed Homepage"
             >
               SH
             </Link>

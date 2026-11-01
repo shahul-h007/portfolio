@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s | Shahul Hameed",
   },
   description:
-    "Personal portfolio of Shahul Hameed. Full-stack developer focused on modern web applications, clean architecture, and purposeful motion.",
+    "Full-stack developer in Kochi, Kerala. Building web apps, SaaS products, and digital experiences with Next.js, TypeScript, and purposeful motion.",
   keywords: [
     "Shahul Hameed",
     "Full-Stack Developer",
@@ -53,6 +53,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Shahul Hameed", url: "https://github.com/shahul-h007" }],
   creator: "Shahul Hameed",
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   robots: {
     index: true,
     follow: true,
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Shahul Hameed — Full-Stack Developer",
     description:
-      "Personal portfolio of Shahul Hameed. Full-stack developer focused on modern web applications, clean architecture, and purposeful motion.",
+      "Full-stack developer in Kochi, Kerala. Building web apps, SaaS products, and digital experiences with Next.js, TypeScript, and purposeful motion.",
     siteName: "Shahul Hameed Portfolio",
     images: [
       {
@@ -85,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shahul Hameed — Full-Stack Developer",
     description:
-      "Personal portfolio of Shahul Hameed. Full-stack developer focused on modern web applications, clean architecture, and purposeful motion.",
+      "Full-stack developer in Kochi, Kerala. Building web apps, SaaS products, and digital experiences with Next.js, TypeScript, and purposeful motion.",
     creator: "@Shahul_hmd404",
     images: ["/og.png"],
   },

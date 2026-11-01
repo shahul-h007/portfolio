@@ -30,18 +30,18 @@ export async function generateMetadata({
 
   return {
     title: `${project.title} — Case Study`,
-    description: project.problemStatement,
+    description: project.metaDescription,
     alternates: {
       canonical: `${SITE_URL}/work/${slug}/`,
     },
     openGraph: {
       title: `${project.title} — Case Study | Shahul Hameed`,
-      description: project.problemStatement,
+      description: project.metaDescription,
       url: `${SITE_URL}/work/${slug}/`,
       type: "article",
       images: [
         {
-          url: project.desktopImage || "/og.png",
+          url: project.desktopImage ? project.desktopImage : "/og.png",
           width: 1200,
           height: 630,
           alt: `${project.title} — Case Study`,
@@ -51,8 +51,8 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${project.title} — Case Study | Shahul Hameed`,
-      description: project.problemStatement,
-      images: [project.desktopImage || "/og.png"],
+      description: project.metaDescription,
+      images: [project.desktopImage ? project.desktopImage : "/og.png"],
     },
   };
 }
@@ -75,65 +75,98 @@ export default async function ProjectCaseStudyPage({
   const nextProject: Project = projects[nextProjectIndex];
   const indexFormatted = String(projectIndex + 1).padStart(2, "0");
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Work",
+        item: `${SITE_URL}/#work`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `${SITE_URL}/work/${slug}/`,
+      },
+    ],
+  };
+
   return (
-    <article className="w-full bg-canvas text-ink pt-20 pb-0">
-      {/* Sticky Sub-Header with "← All work" & Breadcrumb */}
-      <div className="sticky top-0 z-30 bg-canvas/95 backdrop-blur-md border-b border-white/10 mb-8 md:mb-12">
-        <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between text-xs font-mono">
-          {/* Always reachable "← All work" */}
-          <Link
-            href="/#work"
-            className="inline-flex items-center gap-2 uppercase tracking-wider text-ink hover:text-gold transition-colors focus-visible:outline-gold"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <article className="w-full bg-canvas text-ink pt-20 pb-0">
+        {/* Sticky Sub-Header with "← All work" & Breadcrumb */}
+        <div className="sticky top-0 z-30 bg-canvas/95 backdrop-blur-md border-b border-white/10 mb-8 md:mb-12">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between text-xs font-mono">
+            {/* Always reachable "← All work" */}
+            <Link
+              href="/#work"
+              className="inline-flex items-center gap-2 uppercase tracking-wider text-ink hover:text-gold transition-colors focus-visible:outline-gold"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-gold" />
+              <span>All work</span>
+            </Link>
+
+            {/* Breadcrumb: Home / Work / <project> */}
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-muted">
+              <Link href="/" className="hover:text-ink transition-colors">
+                Home
+              </Link>
+              <span className="text-white/20">/</span>
+              <Link href="/#work" className="hover:text-ink transition-colors">
+                Work
+              </Link>
+              <span className="text-white/20">/</span>
+              <span className="text-ink font-medium truncate max-w-[140px] sm:max-w-none">
+                {project.title}
+              </span>
+            </nav>
+          </div>
+        </div>
+
+        {/* 1. HERO SECTION */}
+        <header className="max-w-[1440px] mx-auto px-4 md:px-8 mb-16 md:mb-24">
+          {/* Project Meta Pill/Row */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 mb-8 font-mono text-xs tracking-wider uppercase text-muted">
+            <div className="flex items-center gap-3">
+              <span className="text-gold font-bold">{indexFormatted} // CASE STUDY</span>
+              <span className="text-white/20">|</span>
+              <span>{project.category}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  project.status === "Deployed"
+                    ? "bg-emerald-400"
+                    : project.status === "In development"
+                    ? "bg-amber-400"
+                    : "bg-cyan-400"
+                }`}
+              />
+              <span className="text-ink font-medium">{project.statusBadge}</span>
+            </div>
+          </div>
+
+          {/* Huge Title */}
+          <h1
+            aria-label={`${project.title} — Case Study`}
+            className="font-display text-[clamp(1.45rem,6.2vw,5.5rem)] uppercase tracking-tight font-extrabold text-ink mb-6 break-words leading-[1.05]"
           >
-            <ArrowLeft className="w-3.5 h-3.5 text-gold" />
-            <span>All work</span>
-          </Link>
-
-          {/* Breadcrumb: Home / Work / <project> */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-muted">
-            <Link href="/" className="hover:text-ink transition-colors">
-              Home
-            </Link>
-            <span className="text-white/20">/</span>
-            <Link href="/#work" className="hover:text-ink transition-colors">
-              Work
-            </Link>
-            <span className="text-white/20">/</span>
-            <span className="text-ink font-medium truncate max-w-[140px] sm:max-w-none">
-              {project.title}
-            </span>
-          </nav>
-        </div>
-      </div>
-
-      {/* 1. HERO SECTION */}
-      <header className="max-w-[1440px] mx-auto px-4 md:px-8 mb-16 md:mb-24">
-        {/* Project Meta Pill/Row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 mb-8 font-mono text-xs tracking-wider uppercase text-muted">
-          <div className="flex items-center gap-3">
-            <span className="text-gold font-bold">{indexFormatted} // CASE STUDY</span>
-            <span className="text-white/20">|</span>
-            <span>{project.category}</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                project.status === "Deployed"
-                  ? "bg-emerald-400"
-                  : project.status === "In development"
-                  ? "bg-amber-400"
-                  : "bg-cyan-400"
-              }`}
-            />
-            <span className="text-ink font-medium">{project.statusBadge}</span>
-          </div>
-        </div>
-
-        {/* Huge Title */}
-        <h1 className="font-display text-[clamp(1.45rem,6.2vw,5.5rem)] uppercase tracking-tight font-extrabold text-ink mb-6 break-words leading-[1.05]">
-          <SplitReveal>{project.title}</SplitReveal>
-        </h1>
+            <SplitReveal as="span">{project.title}</SplitReveal>
+          </h1>
 
         {/* Tagline */}
         <p className="font-sans text-lg md:text-2xl text-muted max-w-3xl leading-relaxed mb-10">
@@ -517,5 +550,6 @@ export default async function ProjectCaseStudyPage({
         </div>
       </footer>
     </article>
+    </>
   );
 }

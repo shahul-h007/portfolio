@@ -12,6 +12,7 @@ export interface Project {
   status: ProjectStatus;
   statusBadge: string;
   problemStatement: string;
+  metaDescription: string;
   stack: string[];
   featured: boolean;
   order: number;
@@ -53,6 +54,8 @@ export const projects: Project[] = [
     statusBadge: "Deployed on Vercel",
     problemStatement:
       "Small service businesses struggle to track upcoming client renewals, leading to forgotten contract dates, chaotic spreadsheets, and lost repeat revenue.",
+    metaDescription:
+      "RenewalDesk case study: Next.js SaaS for small service businesses to track recurring customer contracts and dispatch WhatsApp reminders.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -133,6 +136,8 @@ export const projects: Project[] = [
     statusBadge: "Deployed · Login Required",
     problemStatement:
       "Flatmates and tenants face constant friction when splitting uneven monthly rents, utility spikes, and communal grocery expenses without transparent reconciliation.",
+    metaDescription:
+      "RentFlow case study: Next.js and Supabase financial utility for shared living to calculate rent shares, log expenses, and balance household debts.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -213,6 +218,8 @@ export const projects: Project[] = [
     statusBadge: "Client work · In development",
     problemStatement:
       "Independent video editors need high-speed, cinema-grade portfolio platforms that stream high-bitrate commercial cuts without layout shifts or clunky video wrappers.",
+    metaDescription:
+      "Shefeer Portfolio case study: Custom-engineered digital showcase for freelance editor Shefeer, built with modern Next.js, Tailwind CSS, and fluid motion.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     featured: true,
     order: 3,
@@ -281,6 +288,8 @@ export const projects: Project[] = [
     statusBadge: "Academic · Team of 4",
     problemStatement:
       "Purchasing expensive tools, electronics, or equipment used only once or twice is wasteful, yet local communities lack safe, structured ways to borrow from peers.",
+    metaDescription:
+      "BorrowBox case study: Collaborative peer-to-peer equipment lending platform built with a 4-person team to manage community asset sharing and inventory.",
     stack: [
       "Flutter",
       "Python",
@@ -360,6 +369,8 @@ export const projects: Project[] = [
     statusBadge: "Personal · Solo",
     problemStatement:
       "Most mobile idle games rely on intrusive pay-to-win mechanics rather than balanced, enjoyable engineering progression systems.",
+    metaDescription:
+      "Devverse case study: Mobile software studio simulation and idle management game built with Flutter, Dart, SQLite offline saves, and Supabase cloud sync.",
     stack: ["Flutter", "Dart", "Supabase Auth", "SQLite", "AdMob"],
     featured: false,
     order: 5,

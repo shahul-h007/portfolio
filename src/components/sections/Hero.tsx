@@ -198,7 +198,7 @@ export default function Hero() {
             <Image
               ref={portraitImgRef}
               src="/images/shahul-portrait.png"
-              alt="Shahul Hameed"
+              alt="Portrait of Shahul Hameed, full-stack software developer"
               fill
               priority
               sizes="(max-width: 640px) 112px, (max-width: 1024px) 224px, 288px"
@@ -206,11 +206,16 @@ export default function Hero() {
             />
           </div>
 
-          {/* Giant Wordmark: 2 lines in Syne display type at z-20 for total readability */}
-          <div className="w-full select-none leading-none z-20 relative flex flex-col space-y-1 sm:space-y-2">
+          {/* Giant Wordmark: Single Accessible H1 for the page */}
+          <h1
+            aria-label="Shahul Hameed — Full-Stack Developer"
+            className="w-full select-none leading-none z-20 relative flex flex-col space-y-1 sm:space-y-2"
+          >
+            <span className="sr-only">Shahul Hameed — Full-Stack Developer</span>
             {/* Word 1: SHAHUL */}
             <div
               ref={word1Ref}
+              aria-hidden="true"
               className="font-display font-extrabold tracking-tighter text-ink text-[clamp(2.15rem,7.2vw,7.5rem)] flex will-change-transform"
             >
               {word1Chars.map((char, index) => (
@@ -228,6 +233,7 @@ export default function Hero() {
             {/* Word 2: HAMEED. with Gold Full Stop (Strictly Gold Accent 1) */}
             <div
               ref={word2Ref}
+              aria-hidden="true"
               className="font-display font-extrabold tracking-tighter text-ink text-[clamp(2.15rem,7.2vw,7.5rem)] flex will-change-transform pl-[3vw] sm:pl-[6vw] md:pl-[8vw]"
             >
               {word2Chars.map((char, index) => (
@@ -247,7 +253,7 @@ export default function Hero() {
                 </span>
               </span>
             </div>
-          </div>
+          </h1>
         </div>
 
         {/* Lower Composition: Subline, 2-Sentence Intro, CTAs, Ruled Meta Row */}
@@ -262,7 +268,7 @@ export default function Hero() {
                 Developer & Systems Builder
               </span>
               <SplitReveal
-                as="h1"
+                as="p"
                 className="font-sans text-base sm:text-lg md:text-xl font-medium tracking-tight text-ink leading-snug"
               >
                 Building digital products through code.

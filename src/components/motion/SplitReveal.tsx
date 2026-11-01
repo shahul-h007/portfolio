@@ -16,6 +16,7 @@ interface SplitRevealProps {
   duration?: number;
   stagger?: number;
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "div" | "span";
+  ariaLabel?: string;
 }
 
 export default function SplitReveal({
@@ -27,6 +28,7 @@ export default function SplitReveal({
   duration = 1.0,
   stagger = 0.06,
   as: Component = "div",
+  ariaLabel,
 }: SplitRevealProps) {
   const content = text ?? children ?? "";
   const containerRef = useRef<HTMLElement | null>(null);
@@ -207,15 +209,20 @@ export default function SplitReveal({
     };
   }, [splitTextIntoLines]);
 
+  const Comp = Component as any;
+
   return (
-    // @ts-expect-error dynamic component type
-    <Component ref={containerRef} className={className}>
+    <Comp
+      ref={containerRef}
+      className={className}
+      aria-label={ariaLabel ?? (content ? content : undefined)}
+    >
       {words.map((word, index) => (
         <span key={index} className="inline-block split-word">
           {word}
           {index < words.length - 1 ? "\u00A0" : ""}
         </span>
       ))}
-    </Component>
+    </Comp>
   );
 }
